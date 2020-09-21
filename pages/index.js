@@ -39,7 +39,7 @@ export default function Home({ parks }) {
       </Head>
 
       <main className="container mx-auto">
-        <nav className="border-b-2 border-green-700 fixed text-center w-full py-4 bg-white">
+        <nav className="border-b-2 border-green-700 fixed text-center z-10 container py-4 bg-white">
           <Link href="/">
             <a className="text-green-700 hover:text-green-900 transition-colors duration-300">
               My Next Park
