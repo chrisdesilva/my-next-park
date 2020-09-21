@@ -28,3 +28,7 @@ h3 {
 @tailwind components;
 
 @tailwind utilities;
+
+.h2 {
+  @apply text-center text-blue-900 mb-8;
+}

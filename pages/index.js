@@ -5,10 +5,10 @@ import Link from "next/link";
 
 export default function Home({ parks }) {
   console.log(parks);
-  const [parkIndex, setParkIndex] = useState(0);
+  const [parkIndex, setParkIndex] = useState(1);
   const [selected, setSelected] = useState({
     image: parks.data[parkIndex].images[0].url,
-    title: parks.data[parkIndex].fullName,
+    code: parks.data[parkIndex].parkCode,
   });
   const [isLoading, setIsLoading] = useState(true);
 
@@ -19,7 +19,7 @@ export default function Home({ parks }) {
   useEffect(() => {
     setSelected({
       image: parks.data[parkIndex].images[0].url,
-      title: parks.data[parkIndex].fullName,
+      code: parks.data[parkIndex].parkCode,
     });
   }, [parkIndex]);
 
@@ -38,7 +38,7 @@ export default function Home({ parks }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>
+      <main className="container mx-auto">
         <nav className="border-b-2 border-green-700 fixed text-center w-full py-4 bg-white">
           <Link href="/">
             <a className="text-green-700 hover:text-green-900 transition-colors duration-300">
@@ -73,11 +73,7 @@ export default function Home({ parks }) {
                     }
                   })}
                 </select>
-                <Link
-                  href={`/parks/${selected.title
-                    .replaceAll(" ", "-")
-                    .toLowerCase()}`}
-                >
+                <Link href={`/parks/${selected.code}`}>
                   <a className="w-24 block mx-auto mt-4 border-2 py-2 border-green-700 bg-green-700 hover:bg-white text-white hover:text-green-700 transition-colors duration-100 text-center">
                     Let's Go!
                   </a>
