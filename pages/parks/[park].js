@@ -29,24 +29,27 @@ const Park = ({ park }) => {
             <h1 className="text-center text-blue-900">{parkData.fullName}</h1>
           </div>
         </header>
-        <section className="py-8 bg-gray-100">
+        <section className="p-8 bg-gray-100">
           <h2 className="h2">About The Park</h2>
-          <div className="flex justify-between items-center max-w-screen-md mx-auto">
-            <img className="w-64" src="/nature.svg" alt="Nature" />
-            <p className="w-1/2">{parkData.description}</p>
+          <div className="flex flex-col md:flex-row justify-between items-center max-w-screen-md mx-auto">
+            <img className="w-32 md:w-64" src="/nature.svg" alt="Nature" />
+            <p className="md:w-1/2 py-8 md:py-0">{parkData.description}</p>
           </div>
         </section>
-        <section className="py-8">
+        <section className="p-8">
           <h2 className="h2">Getting Here</h2>
-          <div className="flex justify-between items-center max-w-screen-md mx-auto">
-            <div className="w-1/2">
+          <div className="flex flex-col-reverse md:flex-row justify-between items-center max-w-screen-md mx-auto">
+            <div className="md:w-1/2 py-8 md:py-0">
               <p className="mb-4">{parkData.directionsInfo}</p>
-              <a className="text-blue-900" href={parkData.directionsUrl}>
+              <a
+                className="text-blue-900 text-center md:text-left block"
+                href={parkData.directionsUrl}
+              >
                 Directions
               </a>
             </div>
             <img
-              className="w-64"
+              className="w-32 md:w-64"
               src="/through_the_park.svg"
               alt="Through the park"
             />

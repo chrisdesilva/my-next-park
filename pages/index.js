@@ -46,9 +46,11 @@ export default function Home({ parks }) {
             </a>
           </Link>
         </nav>
-        <header className="flex flex-col items-center justify-center container py-24 h-screen">
-          <h1 className="mt-32 mb-12">Find Your Next Adventure</h1>
-          <div className="w-full flex">
+        <header className="flex flex-col items-center justify-center container py-24 px-8">
+          <h1 className="mb-12 text-center text-3xl md:text-5xl">
+            Find Your Next Adventure
+          </h1>
+          <div className="w-full flex flex-col items-center lg:flex-row">
             <div className="flex flex-col items-center w-1/2">
               <div className="border-2 border-gray p-8 shadow">
                 <div className="h-64 w-64 overflow-y-hidden">
@@ -80,7 +82,7 @@ export default function Home({ parks }) {
                 </Link>
               </div>
             </div>
-            <div className="w-1/2 flex items-center justify-center">
+            <div className="w-full lg:w-1/2 flex items-center justify-center py-8 lg:p-0">
               <img className="w-full" src="/navigator.svg" />
             </div>
           </div>
