@@ -4,7 +4,6 @@ import Head from "next/head";
 import Link from "next/link";
 
 const Park = ({ park }) => {
-  console.log(park);
   const parkData = park.data[0];
 
   return (
@@ -62,7 +61,7 @@ const Park = ({ park }) => {
 
 export const getStaticPaths = async () => {
   const res = await axios.get(
-    `https://developer.nps.gov/api/v1/parks?limit=500&api_key=${process.env.PARKS_API_KEY}`
+    `https://developer.nps.gov/api/v1/parks?limit=10&api_key=${process.env.PARKS_API_KEY}`
   );
   const parks = res.data;
 
