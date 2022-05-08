@@ -4,7 +4,6 @@ import Head from "next/head";
 import Link from "next/link";
 
 export default function Home({ parks }) {
-  console.log(parks);
   const [parkIndex, setParkIndex] = useState(1);
   const [selected, setSelected] = useState({
     image: parks.data[parkIndex].images[0].url,

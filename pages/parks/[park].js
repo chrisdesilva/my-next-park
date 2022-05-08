@@ -61,7 +61,7 @@ const Park = ({ park }) => {
 
 export const getStaticPaths = async () => {
   const res = await axios.get(
-    `https://developer.nps.gov/api/v1/parks?limit=10&api_key=${process.env.PARKS_API_KEY}`
+    `https://developer.nps.gov/api/v1/parks?api_key=${process.env.PARKS_API_KEY}`
   );
   const parks = res.data;
 
