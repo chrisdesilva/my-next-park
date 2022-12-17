@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Head from "next/head";
 import Link from "next/link";
+import Layout from "../components/Layout";
 
 export default function Home({ parks }) {
   const [parkIndex, setParkIndex] = useState(1);
@@ -31,63 +32,50 @@ export default function Home({ parks }) {
   if (isLoading) return <p>Loading...</p>;
 
   return (
-    <div>
-      <Head>
-        <title>My Next Park</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main className="container mx-auto">
-        <nav className="border-b-2 border-green-700 fixed text-center z-10 container py-4 bg-white">
-          <Link href="/">
-            <a className="text-green-700 hover:text-green-900 transition-colors duration-300">
-              My Next Park
-            </a>
-          </Link>
-        </nav>
-        <header className="flex flex-col items-center justify-center container py-24 px-8">
-          <h1 className="mb-12 text-center text-3xl md:text-5xl">
-            Find Your Next Adventure
-          </h1>
-          <div className="w-full flex flex-col items-center lg:flex-row">
-            <div className="flex flex-col items-center w-1/2">
-              <div className="border-2 border-gray p-8 shadow">
-                <div className="h-64 w-64 overflow-y-hidden">
-                  <img
-                    className="rounded"
-                    src={selected.image}
-                    alt={selected.title}
-                  />
-                </div>
-                <label>Choose a park</label>
-                <select
-                  onChange={handleChangePark}
-                  className="block w-64 mx-auto bg-white border-2 border-gray-700 text-gray-700 py-3 px-4 focus:border-gray-500"
-                >
-                  {parks.data.map((park, idx) => {
-                    if (park.designation === "National Park") {
-                      return (
-                        <option key={park.id} value={idx}>
-                          {park.fullName}
-                        </option>
-                      );
-                    }
-                  })}
-                </select>
-                <Link href={`/parks/${selected.code}`}>
-                  <a className="w-24 block mx-auto mt-4 border-2 py-2 border-green-700 bg-green-700 hover:bg-white text-white hover:text-green-700 transition-colors duration-100 text-center">
-                    Let's Go!
-                  </a>
-                </Link>
-              </div>
+    <Layout title="Home">
+      <header className="flex flex-col items-center justify-center container py-24 px-8">
+        <h1 className="mb-12 text-center text-3xl md:text-5xl">
+          Find Your Next Adventure
+        </h1>
+      </header>
+      <main className="w-full flex flex-col items-center lg:flex-row">
+        <div className="flex flex-col items-center w-1/2">
+          <div className="border-2 border-gray p-8 shadow">
+            <div className="h-64 w-64 overflow-y-hidden">
+              <img
+                className="rounded"
+                src={selected.image}
+                alt={selected.title}
+              />
             </div>
-            <div className="w-full lg:w-1/2 flex items-center justify-center py-8 lg:p-0">
-              <img className="w-full" src="/navigator.svg" />
-            </div>
+            <label htmlFor="changePark">Choose a park</label>
+            <select
+              id="changePark"
+              onChange={handleChangePark}
+              className="block w-64 mx-auto bg-white border-2 border-gray-700 text-gray-700 py-3 px-4 focus:border-gray-500"
+            >
+              {parks.data.map((park, idx) => {
+                if (park.designation === "National Park") {
+                  return (
+                    <option key={park.id} value={idx}>
+                      {park.fullName}
+                    </option>
+                  );
+                }
+              })}
+            </select>
+            <Link href={`/parks/${selected.code}`}>
+              <a className="w-24 block mx-auto mt-4 border-2 py-2 border-green-700 bg-green-700 hover:bg-white text-white hover:text-green-700 transition-colors duration-100 text-center">
+                Let's Go!
+              </a>
+            </Link>
           </div>
-        </header>
+        </div>
+        <div className="w-full lg:w-1/2 flex items-center justify-center py-8 lg:p-0">
+          <img className="w-full" src="/navigator.svg" />
+        </div>
       </main>
-    </div>
+    </Layout>
   );
 }
 
