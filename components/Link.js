@@ -21,20 +21,16 @@ const Link = ({ className = "", color = "green", href, label }) => {
   };
 
   const colorStyles = getColorStyles();
+  const styles = `${className} ${colorStyles} transition-colors duration-300`;
 
   if (isInternal) {
     <NextLink href={href}>
-      <a className={`${colorStyles} transition-colors duration-300`}>{label}</a>
+      <a className={styles}>{label}</a>
     </NextLink>;
   }
 
   return (
-    <a
-      className={`${className} ${colorStyles} transition-colors duration-300`}
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
-    >
+    <a className={styles} href={href} target="_blank" rel="noopener noreferrer">
       {label}
     </a>
   );
