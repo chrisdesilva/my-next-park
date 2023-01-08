@@ -3,6 +3,7 @@ import axios from "axios";
 import Head from "next/head";
 import Link from "next/link";
 import Layout from "../components/Layout";
+import Text from "../components/Text";
 
 export default function Home({ parks }) {
   const [parkIndex, setParkIndex] = useState(1);
@@ -34,9 +35,9 @@ export default function Home({ parks }) {
   return (
     <Layout title="Home">
       <header className="flex flex-col items-center justify-center container py-24 px-8">
-        <h1 className="mb-12 text-center text-3xl md:text-5xl">
+        <Text element="h1" className="mb-12 text-center">
           Find Your Next Adventure
-        </h1>
+        </Text>
       </header>
       <main className="w-full flex flex-col items-center lg:flex-row">
         <div className="flex flex-col items-center w-1/2">
